@@ -3,61 +3,124 @@
 namespace App\Entity;
 
 use App\Repository\EventoRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * CursoSymfony\EventosBundle\Entity
- *
- * @ORM\Table(name="evento")
- * @ORM\Entity
-*/
+#[ORM\Entity(repositoryClass: EventoRepository::class)]
 class Evento
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $id;
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $titulo;
-    /**
-     * @ORM\Column(type="string", unique=true)
-     */
-    protected $slug;
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected $descripcion;
-    /**
-     * @ORM\Column(type="date")
-     */
-    protected $fecha;
-    /**
-     * @ORM\Column(type="time")
-     */
-    protected $hora;
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $duracion;
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $idioma;
-    /**
-     * @ORM\ManyToOne(targetEntity="Disertante", inversedBy="eventos")
-     * @ORM\JoinColumn(name="disertante_id", referencedColumnName="id")
-     */
-    protected $disertante;
-    /**
-     * @ORM\ManyToMany(targetEntity="Usuario", inversedBy="eventos")
-     * @ORM\JoinTable(name="evento_usuario",
-     * joinColumns={@ORM\JoinColumn(name="evento_id", referencedColumnName="id")},
-     * inverseJoinColumns={@ORM\JoinColumn(name="usuario_id", referencedColumnName="id")}
-     * )
-     */
-    protected $usuarios;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $titulo = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $descripcion = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $fecha = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $hora = null;
+
+    #[ORM\Column]
+    private ?int $duracion = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $idioma = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTitulo(): ?string
+    {
+        return $this->titulo;
+    }
+
+    public function setTitulo(string $titulo): static
+    {
+        $this->titulo = $titulo;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(string $descripcion): static
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    public function getFecha(): ?\DateTimeInterface
+    {
+        return $this->fecha;
+    }
+
+    public function setFecha(\DateTimeInterface $fecha): static
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    public function getHora(): ?\DateTimeInterface
+    {
+        return $this->hora;
+    }
+
+    public function setHora(\DateTimeInterface $hora): static
+    {
+        $this->hora = $hora;
+
+        return $this;
+    }
+
+    public function getDuracion(): ?int
+    {
+        return $this->duracion;
+    }
+
+    public function setDuracion(int $duracion): static
+    {
+        $this->duracion = $duracion;
+
+        return $this;
+    }
+
+    public function getIdioma(): ?string
+    {
+        return $this->idioma;
+    }
+
+    public function setIdioma(string $idioma): static
+    {
+        $this->idioma = $idioma;
+
+        return $this;
+    }
 }
