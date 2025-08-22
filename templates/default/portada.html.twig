@@ -1,0 +1,36 @@
+<html><body> <!-- borrar -->
+<p> 
+    <strong>Symfony 2025</strong>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+
+<!-- MENSAJE FLASH AQUI (utilizar <div class="flash"> </div>) --> 
+
+<div class="grid_6 alpha">
+    <ul>
+    {% for evento in eventosCol1 %} 
+        <li> 
+        <a href="#RUTA_A_DETALLE">{{ evento.titulo }}</a>
+        <p>{{ evento.descripcion }}</p>
+        </li>
+    {% else %}
+        <li>No hay ningun evento.</li>
+    {% endfor %}
+    </ul>
+</div >
+
+<div class="grid_6 omega">
+    <ul>
+    {% for evento in eventosCol2 %} 
+        <li> 
+        <a href="#RUTA_A_DETALLE">{{ evento.titulo }}</a>
+        <p>{{ evento.descripcion }}</p>
+        </li>
+    {% else %}
+        <li>No hay ningun evento.</li>
+    {% endfor %}
+    </ul>
+</div>
+
+</body></html> <!-- borrar -->
