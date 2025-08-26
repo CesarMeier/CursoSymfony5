@@ -9,7 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    #[Route('/', name: 'app_portada')]
+    /**
+     * @Route("/", name="app_portada")
+     */
     public function portadaAction(): Response
     {
         //obtener el entityManager

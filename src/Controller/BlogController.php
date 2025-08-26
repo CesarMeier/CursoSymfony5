@@ -8,7 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
-    #[Route('/blog', name: 'app_blog')]
+    /**
+     * @Route("/blog", name="app_blog")
+     */
     public function index(): Response
     {
         //var_dump('aca entro: ' );exit;
@@ -17,7 +19,9 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/blog/create', name: 'app_')]
+    /**
+     * @Route("/blog/create", name="app")
+     */
     public function create(): Response
     {
         //var_dump('aca entro: ' );exit;
