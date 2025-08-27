@@ -1,16 +1,22 @@
-<html><body> <!-- borrar -->
-<h1>Eventos</h1>
+<html><body> <!-- borrar --> 
 
-{% for evento in eventos %}
-<div> 
-<div class="grid_2 alpha">
-{{ evento. hora | date('H:i') }} - {{ evento.horaFinalizacion | date('H:i') }}
-</div>
-<div class="grid_10 omega">
-<a href="#RUTA_A_DETALLE">{{ evento.titulo }}</a>
+<h1>{{ evento.titulo }}</h1>
 <p>{{ evento.descripcion }}</p>
-</div>
-</div>
-{% endfor %}
 
-</body></html> <!-- borrar -->
+<div class="grid_2 alpha">
+<strong>Fecha</strong> {{ evento.fecha | date("d M") }}
+</div>
+
+<div class="grid_2">
+<strong>Hora</strong> {{ evento.hora | date("H:i") }} - {{ evento.horaFinalizacion | date("H:i") }}
+</div>
+
+<div class="grid_2">
+<strong>Idioma</strong> {{ evento.idioma }}
+</div>
+
+<div class="grid_3">
+<strong>Disertante</strong> <a href="#RUTA_A_DISERTANTES">{{ evento.disertante }}</a>
+</div>
+
+<div class="grid_3 omega">
